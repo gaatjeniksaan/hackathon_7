@@ -38,8 +38,8 @@ def show_predictions():
     uuid = args['sample_uuid']
     args.pop('sample_uuid')
     df = pd.DataFrame([args], columns=args.keys())
-    prediction = model.predict(df)
-    proba = clf.predict_proba(df)[0][0]
+    prediction = model.predict(df)[0]
+    proba = model.predict_proba(df)[0][0]
 
     return jsonify(
         sample_uuid=uuid,
