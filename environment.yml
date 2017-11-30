@@ -8,7 +8,7 @@ dependencies:
 - requests
 - flask-restful
 - numpy
-- sklearn
+- scikit-learn
 - requests
 - json
 - pandas
