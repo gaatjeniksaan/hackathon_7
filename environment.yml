@@ -1,0 +1,14 @@
+name: hackathon7-app
+channels: 
+- defaults
+- conda-forge
+dependencies:
+- python=3
+- flask
+- requests
+- flask-restful
+- numpy
+- sklearn
+- requests
+- json
+- pandas
