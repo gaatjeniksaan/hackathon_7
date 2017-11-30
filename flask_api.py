@@ -36,15 +36,15 @@ model = load_model('.', 'model.pkl')
 def show_predictions():
     args = parser.parse_args()
     col_args = args.copy().pop('sample_uuid')
-    sample_uuid = args['sample_uuid']
+    uuid = args['sample_uuid']
     df = pd.DataFrame([args], columns=args.keys())
     prediction = model.predict(df)
     proba = clf.predict_proba(df)[0][0]
 
     return jsonify(
-        "sample_uuid": sample_uuid,
-        "probability": proba,
-        "label": prediction
+        sample_uuid: uuid,
+        probability: proba,
+        label: prediction
         )
 
 
