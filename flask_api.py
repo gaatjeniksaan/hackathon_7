@@ -4,7 +4,6 @@ from flask import jsonify
 from flask_restful import Api
 from flask_restful import Resource
 from flask_restful import reqparse
-import joblib
 
 import pandas as pd
 import numpy as np
