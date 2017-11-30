@@ -35,9 +35,9 @@ model = load_model('.', 'model.pkl')
 @app.route('/api/v1/predict', methods=['GET', "POST"])
 def show_predictions():
     args = parser.parse_args()
-    col_args = args.copy().pop('sample_uuid')
     uuid = args['sample_uuid']
-    df = pd.DataFrame([col_args], columns=col_args.keys())
+    args.pop('sample_uuid')
+    df = pd.DataFrame([args], columns=args.keys())
     prediction = model.predict(df)
     proba = clf.predict_proba(df)[0][0]
 
