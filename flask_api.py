@@ -42,9 +42,9 @@ def show_predictions():
     proba = clf.predict_proba(df)[0][0]
 
     return jsonify(
-        sample_uuid: uuid,
-        probability: proba,
-        label: prediction
+        sample_uuid=uuid,
+        probability=proba,
+        label=prediction
         )
 
 
