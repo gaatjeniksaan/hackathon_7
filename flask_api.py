@@ -41,6 +41,10 @@ def show_predictions():
     prediction = model.predict(df)[0]
     proba = model.predict_proba(df)[0][0]
 
+    print('---------------------')
+    print('HERE ARE YOUR RESULTS')
+    print('uuid: {}, probability: {}, label: {}'.format(uuid, proba, prediction))
+    print('---------------------')
     return jsonify(
         sample_uuid=uuid,
         probability=proba,
