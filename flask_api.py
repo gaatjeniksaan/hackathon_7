@@ -25,7 +25,7 @@ for col in subset:
 		parser.add_argument(col, type=int)
 	except:
 		raise ValueError('Did not pass the proper data for {}'.format(col))
-parser.add_argument(sample_uuid, type=str)
+parser.add_argument('sample_uuid', type=str)
 
 def load_model(model_dir, model_name):
     return joblib.load(model_dir+'/'+model_name) 
