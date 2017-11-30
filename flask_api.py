@@ -29,7 +29,7 @@ for col in subset:
 def load_model(model_dir, model_name):
     return joblib.load(model_dir+'/'+model_name) 
 
-model = load_model('.', 'test.pkl')
+model = load_model('.', 'model.pkl')
 
 @app.route('/api/v1/predict', methods=['GET', "POST"])
 def show_predictions():
