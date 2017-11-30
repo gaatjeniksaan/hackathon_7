@@ -10,5 +10,4 @@ dependencies:
 - numpy
 - scikit-learn
 - requests
-- json
 - pandas
