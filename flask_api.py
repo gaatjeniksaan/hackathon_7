@@ -25,6 +25,7 @@ for col in subset:
 		parser.add_argument(col, type=int)
 	except:
 		raise ValueError('Did not pass the proper data for {}'.format(col))
+parser.add_argument(sample_uuid, type=str)
 
 def load_model(model_dir, model_name):
     return joblib.load(model_dir+'/'+model_name) 
@@ -34,15 +35,17 @@ model = load_model('.', 'model.pkl')
 @app.route('/api/v1/predict', methods=['GET', "POST"])
 def show_predictions():
     args = parser.parse_args()
-    #print(args)
-    #print('Your arguments are {}'.format(args))
+    col_args = args.copy().pop('sample_uuid')
+    sample_uuid = args['sample_uuid']
     df = pd.DataFrame([args], columns=args.keys())
-    #print(df.info())
-    #print(df)
     prediction = model.predict(df)
-    print('my first prediction {}'.format(prediction[0]))
+    proba = clf.predict_proba(df)[0][0]
 
-    return jsonify(prediction[0])
+    return jsonify(
+        "sample_uuid": sample_uuid,
+        "probability": proba,
+        "label": prediction
+        )
 
 
 if __name__ == '__main__':
